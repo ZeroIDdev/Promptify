@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter} from "next/navigation";
 
 import Form from "@components/Form";
 const EditPrompt = () => {
   const router = useRouter();
   // const promptId = searchParams.get("id");
-  const { id: promptId } = router.query;
+  const { id: promptId } = router.query ?? {}; // Mendapatkan query string "id" dari URL
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
     prompt: "",
