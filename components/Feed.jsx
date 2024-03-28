@@ -22,7 +22,7 @@ const Feed = () => {
   const handleSearchChange = async(e) => {
     e.preventDefault()
     try {
-      const res = await fetch(`http://localhost:3000/api/prompt/search?q=${searchRef.current.value}`)
+      const res = await fetch(`/api/prompt/search?q=${searchRef.current.value}`)
       const data = await res.json()
       console.log(searchRef.current.value);
       console.log(data);
