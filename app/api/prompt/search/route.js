@@ -6,13 +6,15 @@ export const GET = async(req) =>{
     const query = param.get('q')
     try {
         await connectToDB()
-        const result = await Prompt.find({
-            $or: [
-                { prompt: { $regex: query ,$options: 'i'}}, 
-                { tag: { $regex: query ,$options: 'i'}},
-                {username :{$regex:query,$options: 'i'}}
-              ]
-        }).populate('creator')
+     const regexQuery = new RegExp(query, 'i');
+
+const result = await Prompt.find({
+    $or: [
+        { prompt: { $regex: regexQuery }}, 
+        { tag: { $regex: regexQuery }},
+        { username: { $regex: regexQuery }}
+    ]
+}).populate('creator');
         return new Response(JSON.stringify(result),{
             status:200
         })
