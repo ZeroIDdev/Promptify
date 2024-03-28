@@ -57,7 +57,11 @@ const Feed = () => {
           className="search_input"
         />
       </form>
+      {
+        post.length>0&&
       <PromptCardList data={post} handleTagClick={() => {}} />
+        
+      }
     </section>
   );
 };
